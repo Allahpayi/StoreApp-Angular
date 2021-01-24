@@ -1,0 +1,10 @@
+<h3>Kategori Ekle</h3>
+<form [formGroup]="categoryAdd" (ngSubmit)="add()" class="mt-2">
+    <div class="form-group">
+        <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="Kategory adı">
+        <div class="alert alert-danger" *ngIf="categoryAdd.get('name').hasError('required') && categoryAdd.get('name').dirty ">
+            Kategori adı zorunludur
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="categoryAdd.invalid">Ürün Eklü</button>
+</form>

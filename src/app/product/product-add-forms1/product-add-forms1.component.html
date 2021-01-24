@@ -1,0 +1,43 @@
+<h3>Yeni ürün ekle.</h3>
+<form #productAddForm="ngForm" (ngSubmit)="add(productAddForm)">
+    <div class="form-group">
+        <input type="text" placeholder="Ürün adı" #name="ngModel" [(ngModel)]="model.name" class="form-control"
+            name="name" id="name" required>
+        <div class="mt-2 alert alert-danger" *ngIf="name.invalid&&name.dirty">
+            Ürün ismi gereklidir...
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Açıklama adı" #description="ngModel" [(ngModel)]="model.description"
+            class="form-control" name="description" id="description" required>
+        <div class="mt-2 alert alert-danger" *ngIf="description.invalid&&description.dirty">
+            Ürün açıklaması gereklidir...
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Ürün resmi" #imageUrl="ngModel" [(ngModel)]="model.imageUrl"
+            class="form-control" name="imageUrl" id="imageUrl" required>
+        <div class="mt-2 alert alert-danger" *ngIf="imageUrl.invalid&&imageUrl.dirty">
+            Ürün resmi gereklidir...
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Ürün fiyatı" #price="ngModel" [(ngModel)]="model.price" class="form-control"
+            name="price" id="price" required>
+        <div class="mt-2 alert alert-danger" *ngIf="price.invalid&&price.dirty">
+            Ürün fiyatı gereklidir...
+        </div>
+    </div>
+    <div class="form-group">
+        <select class="form-control" #categoryId="ngModel" [(ngModel)]="model.categoryId" required id="categoryId"
+            name="categoryId">
+            <option [value]="category.id" *ngFor="let category of categories">
+                {{category.name}}
+            </option>
+        </select>
+        <div class="mt-2 alert alert-danger" *ngIf="categoryId.invalid&&categoryId.touched">
+            Category gereklidir...
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="productAddForm.invalid">Ürün Eklü</button>
+</form>
